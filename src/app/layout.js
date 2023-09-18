@@ -1,3 +1,4 @@
+import { Header } from "@/components/Header";
 import "@/styles/globals.css";
 import { Almarai, Inter } from "next/font/google";
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} ${almarai.variable} font-almarai`}>
+        <Header />
         {children}
       </body>
     </html>
