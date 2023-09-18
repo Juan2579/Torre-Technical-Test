@@ -2,4 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.overlay {
+  background-color: transparent;
+  background-image: radial-gradient(
+    at bottom center,
+    #251f87cc 0%,
+    #251F87 75%
+  );
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
