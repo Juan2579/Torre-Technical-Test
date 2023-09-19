@@ -11,11 +11,11 @@ export const Hero = () => {
             WELCOME TO JOBFINDLY
           </p>
           <h1 className="text-white text-3xl font-bold lg:text-6xl">
-            We help you find your dream job.
+            We help you find your ideal candidate.
           </h1>
           <p className="text-white lg:text-2xl">
-            Are you ready to elevate your professional journey to new heights?
-            With JobFindly, your dream job is just a click away.
+            Are you ready to find outstanding candidates? With JobFindly, your
+            ideal candidate is just a click away.
           </p>
           <Link
             href="#jobs"
