@@ -1,7 +1,9 @@
+import { Hero } from "@/components/Hero";
+
 export default function Home() {
   return (
-    <main className="flex flex-col items-center">
-      <p>Project set-up</p>
+    <main className="w-full flex flex-col">
+      <Hero />
     </main>
   )
 }

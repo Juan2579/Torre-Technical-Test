@@ -14,6 +14,9 @@ module.exports = {
       colors: {
         "primary-purple": "#251f87",
         "primary-blue": "#32cae4",
+      },
+      backgroundImage: {
+        "hero-bg": "url('https://fullkit.moxcreative.com/biru/wp-content/uploads/sites/20/2022/10/bg_pattern.png')"
       }
     },
   },
