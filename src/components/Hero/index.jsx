@@ -18,7 +18,7 @@ export const Hero = () => {
             ideal candidate is just a click away.
           </p>
           <Link
-            href="#jobs"
+            href="#people"
             className="bg-primary-blue text-white font-bold rounded-md py-4 px-6 cursor-pointer transition-all hover:opacity-50"
           >
             GET STARTED

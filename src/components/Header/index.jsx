@@ -25,7 +25,7 @@ export const Header = () => {
   }
 
   return (
-    <header className="w-full sticky top-0 z-[100] bg-white">
+    <header className="w-full sticky top-0 z-[100] bg-white shadow-sm">
       <div className="w-[90%] mx-auto xl:w-[85%] flex items-center justify-between py-5">
         <Image
           className="w-44 md:w-64"
