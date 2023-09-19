@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { PeopleContextProvider } from "@/context/PeopleContext";
 import "@/styles/globals.css";
 import { Almarai, Inter } from "next/font/google";
 
@@ -24,10 +25,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${almarai.variable} font-almarai`}>
-        <Header />
-        {children}
-      </body>
+      <PeopleContextProvider>
+        <body className={`${inter.variable} ${almarai.variable} font-almarai`}>
+          <Header />
+          {children}
+        </body>
+      </PeopleContextProvider>
     </html>
   );
 }

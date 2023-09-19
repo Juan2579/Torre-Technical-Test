@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const Hero = () => {
   return (
-    <div className="w-full flex items-center relative bg-hero-bg bg-primary-purple">
+    <div id="home" className="w-full flex items-center relative bg-hero-bg bg-primary-purple">
       <div className="overlay"></div>
       <section className="w-[90%] relative h-full mx-auto flex flex-col gap-10 py-10 items-center justify-between md:flex-row lg:py-20 xl:w-[85%] min-[1800px]:w-[75%] min-[2000px]:w-[65%] z-50">
         <div className="max-w-[600px] flex flex-col items-center text-center gap-5 lg:text-left lg:items-start lg:gap-8">

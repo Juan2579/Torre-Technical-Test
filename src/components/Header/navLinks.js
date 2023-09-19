@@ -1,1 +1,1 @@
-export const navLinks = ["home", "people", "favorites"];
+export const navLinks = ["home", "people"];

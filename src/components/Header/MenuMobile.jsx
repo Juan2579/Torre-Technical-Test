@@ -1,10 +1,11 @@
+"use client"
 import { Box, Drawer, IconButton } from "@mui/material";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
 import { navLinks } from "./navLinks";
 import Link from "next/link";
 
-export const MenuMobile = ({ open, onClose }) => {
+export const MenuMobile = ({ open, onClose, openSidebar }) => {
   return (
     <Drawer
       transitionDuration={500}
@@ -34,13 +35,19 @@ export const MenuMobile = ({ open, onClose }) => {
         </div>
         <ul className="flex flex-col gap-5">
           {navLinks.map((item) => (
-            <li className="flex items-center capitalize text-white" key={`${item}`}>
+            <li
+              className="flex items-center capitalize text-white"
+              key={`${item}`}
+            >
               <Link className="h-11 text-center font-bold" href={`#${item}`}>
                 {item}
               </Link>
             </li>
           ))}
-          <a className="bg-primary-blue text-white font-bold rounded-md py-4 px-6">
+          <li onClick={openSidebar} className="flex h-11 text-center font-bold items-center capitalize text-white cursor-pointer">
+            Favorites
+          </li>
+          <a href="#people" className="bg-primary-blue text-white font-bold rounded-md py-4 px-6">
             GET STARTED
           </a>
         </ul>
