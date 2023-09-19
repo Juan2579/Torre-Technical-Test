@@ -40,13 +40,13 @@ export const Person = ({ person }) => {
     <li className="w-full relative max-w-[550px] min-h-[350px] flex flex-col items-center justify-center gap-5 bg-white p-7 rounded-lg shadow-xl md:flex-row">
       <img
         className="w-[100px] h-[100px] rounded-lg"
-        src={person.picture}
+        src={person.picture || person.imageUrl}
         alt={`${person.name} Photo`}
       />
       <div className="w-full flex flex-col gap-5">
         <p className="font-bold capitalize">{person.name}</p>
         <p>{person.professionalHeadline}</p>
-        {person.openTo.length > 0 && (
+        {(person.openTo && person.openTo.length) > 0 && (
           <ul className="flex flex-col gap-2">
             <p>Open to:</p>
             {person.openTo.map((item) => (

@@ -5,15 +5,14 @@ export const httpRequest = {
         const response = await fetch(`${apiUrl}/${endpoint}`, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/x-ndjson",
           },
-          ...(values && { body: JSON.stringify(values) }),
-          credentials: "same-origin",
+          body: JSON.stringify(values),
         });
-        const data = await response.json();
+        const data = await response.json()
         resolve({
           data,
-          status: response.status,
+          response
         });
       } catch (error) {
         console.log(error);

@@ -13,16 +13,18 @@ export const PeopleContextProvider = ({ children }) => {
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(false);
   const [favoriteList, setFavoriteList] = useState([]);
+  const [individualSearch, setIndividualSearch] = useState(false);
 
   const getPeople = async (query) => {
     try {
+      setIndividualSearch(false)
       setLoading(true);
-      
+
       const { data } = await httpRequest.post({
         apiUrl: searchPeopleUrl,
         endpoint: `people/_search?size=10${query ? query : ""}`,
       });
-      
+
       setLoading(false);
       setPeopleList(data.results);
       setPagination(data.pagination);
@@ -53,20 +55,42 @@ export const PeopleContextProvider = ({ children }) => {
   };
 
   const handleSearchPerson = async (query) => {
-    console.log(query);
-    const data = await httpRequest.post({
-      apiUrl: searchPersonUrl,
-      endpoint: `entities/_searchStream`,
-      values: {
-        query: query,
-        limit: 10,
-        identityType: "person",
-        meta: false,
-        torreGgId: 1464321,
-      },
-    });
+    try {
+      setIndividualSearch(true)
+      setLoading(true);
+      const response = await fetch(
+        `${searchPersonUrl}/entities/_searchStream`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query: query,
+            identityType: "person",
+            limit: 10,
+          }),
+        }
+      );
+      const data = await response.text();
 
-    console.log(data);
+      const lines = data.split("\n");
+
+      const jsonObjects = [];
+
+      for (const line of lines) {
+        if (line.trim() !== "") {
+          const jsonObject = JSON.parse(line);
+          jsonObjects.push(jsonObject);
+        }
+      }
+      setPeopleList(jsonObjects);
+
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   };
 
   const handleAddToFavorites = (person) => {
@@ -86,7 +110,9 @@ export const PeopleContextProvider = ({ children }) => {
     setFavoriteList(newFavoriteList);
   };
 
-  console.log(peopleList);
+  const handleRemoveFilter = async() => {
+    const data = await getPeople()
+  }
 
   useEffect(() => {
     getPeople();
@@ -102,10 +128,12 @@ export const PeopleContextProvider = ({ children }) => {
         handleNextPage,
         handlePreviousPage,
         handleSearchPerson,
+        individualSearch,
 
         favoriteList,
         handleAddToFavorites,
         handleRemoveFromFavorites,
+        handleRemoveFilter
       }}
     >
       {children}
