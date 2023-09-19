@@ -20,12 +20,12 @@ export const MenuDesktop = ({openSidebar}) => {
           Favorites
         </li>
       </ul>
-      <Link
-        href="#jobs"
+      <a
+        href="#people"
         className="bg-primary-blue text-white font-bold rounded-md py-4 px-6 cursor-pointer transition-all hover:opacity-50"
       >
         GET STARTED
-      </Link>
+      </a>
     </nav>
   );
 };

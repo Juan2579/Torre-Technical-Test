@@ -47,7 +47,7 @@ export const MenuMobile = ({ open, onClose, openSidebar }) => {
           <li onClick={openSidebar} className="flex h-11 text-center font-bold items-center capitalize text-white cursor-pointer">
             Favorites
           </li>
-          <a className="bg-primary-blue text-white font-bold rounded-md py-4 px-6">
+          <a href="#people" className="bg-primary-blue text-white font-bold rounded-md py-4 px-6">
             GET STARTED
           </a>
         </ul>

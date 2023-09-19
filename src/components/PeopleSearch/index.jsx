@@ -18,7 +18,7 @@ export const PeopleSearch = () => {
         <h2 className="text-center text-primary-purple text-xl lg:text-2xl font-bold">
           Find the best candidates!
         </h2>
-        <div className="w-full flex  justify-center">
+        {/* <div className="w-full flex  justify-center">
           <input
             className="w-full max-w-[400px] h-14 rounded-l-[30px] z-10 bg-white text-sm py-4 px-6 outline-none shadow-xl"
             type="text"
@@ -31,7 +31,7 @@ export const PeopleSearch = () => {
             <SearchIcon size="large" />
             <span>Search</span>
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

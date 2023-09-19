@@ -11,27 +11,45 @@ export const PeopleContextProvider = ({ children }) => {
 
   const [peopleList, setPeopleList] = useState([]);
   const [pagination, setPagination] = useState({});
+  const [loading, setLoading] = useState(false);
   const [favoriteList, setFavoriteList] = useState([]);
 
   const getPeople = async (query) => {
-    const { data } = await httpRequest.post({
-      apiUrl: searchPeopleUrl,
-      endpoint: `people/_search?size=10${query ? query : ""}`,
-    });
-
-    setPeopleList(data.results);
-    setPagination(data.pagination);
-    return data.results;
+    try {
+      setLoading(true);
+      
+      const { data } = await httpRequest.post({
+        apiUrl: searchPeopleUrl,
+        endpoint: `people/_search?size=10${query ? query : ""}`,
+      });
+      
+      setLoading(false);
+      setPeopleList(data.results);
+      setPagination(data.pagination);
+      return data.results;
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
 
   const handleNextPage = async () => {
-    const data = await getPeople(`&after=${pagination.next}`);
-    setPeopleList(data);
+    try {
+      const data = await getPeople(`&after=${pagination.next}`);
+      setPeopleList(data);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
 
   const handlePreviousPage = async () => {
-    const data = await getPeople(`&before=${pagination.before}`);
-    setPeopleList(data);
+    try {
+      const data = await getPeople(`&before=${pagination.previous}`);
+      setPeopleList(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSearchPerson = async (query) => {
@@ -77,6 +95,8 @@ export const PeopleContextProvider = ({ children }) => {
   return (
     <PeopleContext.Provider
       value={{
+        loading,
+        pagination,
         peopleList,
         getPeople,
         handleNextPage,
@@ -85,7 +105,7 @@ export const PeopleContextProvider = ({ children }) => {
 
         favoriteList,
         handleAddToFavorites,
-        handleRemoveFromFavorites
+        handleRemoveFromFavorites,
       }}
     >
       {children}
