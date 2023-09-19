@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { PeopleList } from "@/components/PeopleList";
 import { PeopleSearch } from "@/components/PeopleSearch";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
       <Hero />
 
       <PeopleSearch />
+      <PeopleList />
     </main>
   )
 }
